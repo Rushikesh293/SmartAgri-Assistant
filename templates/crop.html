@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Crop Recommendation</h2>
+<form method="POST" class="row g-3">
+  <div class="col-md-2"><input class="form-control" name="N" placeholder="Nitrogen" required></div>
+  <div class="col-md-2"><input class="form-control" name="P" placeholder="Phosphorus" required></div>
+  <div class="col-md-2"><input class="form-control" name="K" placeholder="Potassium" required></div>
+  <div class="col-md-2"><input class="form-control" name="temperature" placeholder="Temperature" required></div>
+  <div class="col-md-2"><input class="form-control" name="humidity" placeholder="Humidity" required></div>
+  <div class="col-md-2"><input class="form-control" name="ph" placeholder="pH" required></div>
+  <div class="col-md-2 mt-2"><input class="form-control" name="rainfall" placeholder="Rainfall" required></div>
+  <div class="col-md-12 mt-2"><button class="btn btn-success">Predict</button></div>
+</form>
+
+{% if prediction %}
+<hr>
+<h4>Recommended Crop: <span class="badge bg-success">{{ prediction }}</span></h4>
+{% endif %}
+{% endblock %}

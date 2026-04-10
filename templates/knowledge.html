@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% block content %}
+<h2 class="mb-4">📚 Smart Farming Knowledge Base</h2>
+
+<div class="accordion" id="knowledgeAccordion">
+
+  <!-- Crop Selection -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingCrop">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCrop">
+        🌾 Crop Selection Tips
+      </button>
+    </h2>
+    <div id="collapseCrop" class="accordion-collapse collapse show" data-bs-parent="#knowledgeAccordion">
+      <div class="accordion-body">
+        - Choose crops based on soil type and rainfall patterns.<br>
+        - Use crop rotation to maintain soil fertility.<br>
+        - Prefer high-yield and disease-resistant crop varieties.
+      </div>
+    </div>
+  </div>
+
+  <!-- Soil Health -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingSoil">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSoil">
+        🌱 Soil Health
+      </button>
+    </h2>
+    <div id="collapseSoil" class="accordion-collapse collapse" data-bs-parent="#knowledgeAccordion">
+      <div class="accordion-body">
+        - Test soil pH regularly and apply lime or gypsum as required.<br>
+        - Use organic manure and compost for better fertility.<br>
+        - Avoid overuse of chemical fertilizers to protect soil microbes.
+      </div>
+    </div>
+  </div>
+
+  <!-- Irrigation -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingIrrigation">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseIrrigation">
+        💧 Irrigation Best Practices
+      </button>
+    </h2>
+    <div id="collapseIrrigation" class="accordion-collapse collapse" data-bs-parent="#knowledgeAccordion">
+      <div class="accordion-body">
+        - Adopt drip irrigation for water efficiency.<br>
+        - Water crops early in the morning or late evening to reduce evaporation.<br>
+        - Ensure proper drainage to avoid waterlogging.
+      </div>
+    </div>
+  </div>
+
+  <!-- Pest & Disease Management -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingPest">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePest">
+        🐛 Pest & Disease Management
+      </button>
+    </h2>
+    <div id="collapsePest" class="accordion-collapse collapse" data-bs-parent="#knowledgeAccordion">
+      <div class="accordion-body">
+        - Rotate crops to break pest cycles.<br>
+        - Use biological control methods like neem oil.<br>
+        - Monitor fields regularly to detect early signs of infestation.
+      </div>
+    </div>
+  </div>
+
+  <!-- Market & Storage -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingMarket">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseMarket">
+        🏪 Market & Storage
+      </button>
+    </h2>
+    <div id="collapseMarket" class="accordion-collapse collapse" data-bs-parent="#knowledgeAccordion">
+      <div class="accordion-body">
+        - Store grains in airtight containers to prevent pest damage.<br>
+        - Sell crops in local markets with higher demand.<br>
+        - Stay updated with government schemes and support prices.
+      </div>
+    </div>
+  </div>
+
+</div>
+{% endblock %}
+

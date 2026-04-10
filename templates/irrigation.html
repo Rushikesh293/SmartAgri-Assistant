@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Irrigation Suggestion</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f9f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            text-align: center;
+        }
+        h1 {
+            color: #2d572c;
+            margin-bottom: 20px;
+        }
+        form {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        input[type="number"] {
+            padding: 10px;
+            width: 90%;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+        button {
+            background: #2d89ef;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background: #2267b5;
+        }
+        .result-box {
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            font-size: 16px;
+            line-height: 1.6;
+            text-align: left;
+            white-space: pre-line;
+        }
+        .irrigation-needed {
+            background: #e6f2ff;
+            border-left: 6px solid #2d89ef;
+            color: #1a3e70;
+        }
+        .no-irrigation {
+            background: #e6ffe6;
+            border-left: 6px solid #2e7d32;
+            color: #1b5e20;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌾 Smart Irrigation Suggestion</h1>
+
+        <form method="POST">
+            <input type="number" name="Soil_Moist" placeholder="Soil Moisture (%)" required><br>
+            <input type="number" name="Temperat" placeholder="Temperature (°C)" required><br>
+            <input type="number" name="Soil_Humic" placeholder="Soil Humidity (%)" required><br>
+            <input type="number" name="rainfall" placeholder="Rainfall (mm)" required><br>
+            <button type="submit">Get Advice</button>
+        </form>
+
+        {% if result %}
+        <div class="result-box 
+            {% if 'Irrigation Needed' in result %}
+                irrigation-needed
+            {% else %}
+                no-irrigation
+            {% endif %}">
+            {{ result }}
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
+
+
+{% if advice %}
+<hr>
+<h4>{{ advice }}</h4>
+{% endif %}
+{% endblock %}
