@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2 class="text-center mb-4">📚 Smart Agriculture Knowledge Base</h2>
+
+<!-- Crop Selection -->
+<form method="POST" class="mb-4 text-center">
+    <select name="crop" class="form-select w-50 mx-auto" required>
+        <option value="">Select Crop</option>
+        {% for crop in crops %}
+        <option value="{{ crop }}" {% if crop == selected_crop %}selected{% endif %}>
+            {{ crop.capitalize() }}
+        </option>
+        {% endfor %}
+    </select>
+
+    <button class="btn btn-primary mt-3">View Details</button>
+</form>
+
+{% if crop_data %}
+
+<div class="row g-4">
+
+    <!-- Basic Info -->
+    <div class="col-md-6">
+        <div class="card p-3">
+            <h4>🌍 Basic Information</h4>
+            <p><b>Soil:</b> {{ crop_data.soil }}</p>
+            <p><b>Climate:</b> {{ crop_data.climate }}</p>
+            <p><b>Season:</b> {{ crop_data.season }}</p>
+            <p><b>Sowing:</b> {{ crop_data.sowing_time }}</p>
+            <p><b>Harvest:</b> {{ crop_data.harvest_time }}</p>
+        </div>
+    </div>
+
+    <!-- Irrigation -->
+    <div class="col-md-6">
+        <div class="card p-3">
+            <h4>💧 Irrigation Tips</h4>
+            <ul>
+                {% for i in crop_data.irrigation.general %}
+                <li>{{ i }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <!-- Fertilizer -->
+    <div class="col-md-6">
+        <div class="card p-3">
+            <h4>🧪 Fertilizer</h4>
+            <ul>
+                {% for f in crop_data.fertilizer %}
+                <li>{{ f }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <!-- Best Practices -->
+    <div class="col-md-6">
+        <div class="card p-3">
+            <h4>🌾 Best Practices</h4>
+            <ul>
+                {% for p in crop_data.best_practices %}
+                <li>{{ p }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+<!-- Diseases Section -->
+<div class="card p-3 mt-4">
+    <h4>🌿 Diseases</h4>
+
+    {% for d in crop_data.diseases %}
+    <div class="border p-2 mb-2 rounded">
+        <b>{{ d.name }}</b><br>
+        <b>Symptoms:</b> {{ d.symptoms }}<br>
+        <b>Cause:</b> {{ d.cause }}<br>
+        <b>Prevention:</b> {{ d.prevention }}<br>
+        <b>Cure:</b> {{ d.cure }}
+    </div>
+    {% endfor %}
+</div>
+
+{% endif %}
+
+{% endblock %}
+

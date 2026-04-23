@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="text-center mb-4">
+  <h1 class="display-5 fw-bold">🌱 SmartAgri Assistant</h1>
+  <p class="lead">AI-powered solutions for modern agriculture</p>
+</div>
+
+<div class="container mt-5">
+
+  <div class="row g-4 justify-content-center">
+
+    <!-- Card 1 -->
+    <div class="col-md-3">
+      <div class="card text-center p-3 h-100 d-flex flex-column">
+        <h5>🌾 Crop Recommendation</h5>
+        <p class="flex-grow-1">Get the best crop suggestions based on soil and weather conditions.</p>
+        <a href="{{ url_for('crop_page') }}" class="btn btn-primary">Try Now</a>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="col-md-3">
+      <div class="card text-center p-3 h-100 d-flex flex-column">
+        <h5>📊 Yield Prediction</h5>
+        <p class="flex-grow-1">Predict the expected yield for your chosen crop and conditions.</p>
+        <a href="{{ url_for('yield_page') }}" class="btn btn-primary">Try Now</a>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="col-md-3">
+      <div class="card text-center p-3 h-100 d-flex flex-column">
+        <h5>💧 Irrigation Suggestion</h5>
+        <p class="flex-grow-1">Smart water usage recommendations for your crops.</p>
+        <a href="{{ url_for('irrigation_page') }}" class="btn btn-primary">Try Now</a>
+      </div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="col-md-3">
+      <div class="card text-center p-3 h-100 d-flex flex-column">
+        <h5>🧬 Disease Detection</h5>
+        <p class="flex-grow-1">Upload leaf images and detect crop diseases instantly.</p>
+        <a href="{{ url_for('disease_page') }}" class="btn btn-primary">Try Now</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- SECOND ROW -->
+  <div class="row g-4 justify-content-center mt-2">
+
+    <!-- 🔥 NEW FULL REPORT CARD -->
+    <div class="col-md-3">
+      <div class="card text-center p-3 h-100 d-flex flex-column">
+        <h5>📄 Full Report</h5>
+        <p class="flex-grow-1">Generate a complete AI-powered agriculture report with insights.</p>
+        <a href="{{ url_for('full_report') }}" class="btn btn-primary">Generate</a>
+      </div>
+    </div>
+
+    <!-- Knowledge Base -->
+    <div class="col-md-3 d-flex flex-column">
+      <div class="card text-center p-3 h-100">
+        <h5>📚 Knowledge Base</h5>
+        <p class="flex-grow-1">Explore tips and best practices for farming.</p>
+        <a href="{{ url_for('knowledge_page') }}" class="btn btn-primary">Explore</a>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+{% endblock %}
+

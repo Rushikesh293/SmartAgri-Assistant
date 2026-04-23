@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container mt-5" style="max-width: 700px;">
+
+    <div class="card p-4">
+        <h2 class="text-center mb-4">🌱 Plant Disease Detection</h2>
+
+        <!-- Upload Form -->
+        <form method="POST" enctype="multipart/form-data" class="text-center">
+            <input class="form-control mb-3" type="file" name="file" accept="image/*" required onchange="previewImage(event)">
+            <button type="submit" class="btn btn-success">Detect Disease</button>
+        </form>
+
+        <!-- Image Preview -->
+        <div class="mt-4 text-center">
+            <img id="preview" class="preview img-fluid d-none rounded" style="max-height:300px;">
+        </div>
+
+        <!-- Prediction -->
+        {% if prediction %}
+        <div class="alert alert-info mt-4 text-center">
+            <h4>✅ Prediction: <strong>{{ prediction }}</strong></h4>
+        </div>
+        {% endif %}
+
+        <!-- Disease Details -->
+        {% if disease %}
+        <div class="card p-3 mt-4 border-start border-success border-4">
+
+            <h4 class="text-success">🌿 Disease Analysis</h4>
+
+            <p><b>🦠 Disease:</b> {{ prediction }}</p>
+            <p><b>📊 Confidence:</b> {{ confidence }}%</p>
+
+            <hr>
+
+            <p><b>⚠ Cause:</b> {{ details.cause }}</p>
+            <p><b>🔍 Symptoms:</b> {{ details.symptoms }}</p>
+            <p><b>🛡 Prevention:</b> {{ details.prevention }}</p>
+            <p><b>💊 Cure:</b> {{ details.cure }}</p>
+
+        </div>
+        {% endif %}
+
+    </div>
+</div>
+
+<script>
+function previewImage(event) {
+    let reader = new FileReader();
+    reader.onload = function(){
+        let output = document.getElementById('preview');
+        output.src = reader.result;
+        output.classList.remove("d-none");
+    };
+    reader.readAsDataURL(event.target.files[0]);
+}
+</script>
+
+{% endblock %}

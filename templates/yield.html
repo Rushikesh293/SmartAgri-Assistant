@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container mt-5" style="max-width: 700px;">
+
+  <div class="card p-4">
+
+    <h2 class="text-center mb-4">📊 Crop Yield Prediction</h2>
+
+    <!-- Form -->
+    <form method="POST" class="row g-3">
+
+      <div class="col-md-6">
+        <input class="form-control" name="crop" placeholder="Crop Name" required>
+      </div>
+
+      <div class="col-md-6">
+        <input class="form-control" name="rainfall" placeholder="Rainfall (mm)" required>
+      </div>
+
+      <div class="col-md-6">
+        <input class="form-control" name="temperature" placeholder="Temperature (°C)" required>
+      </div>
+
+      <div class="col-md-6">
+        <input class="form-control" name="pesticides" placeholder="Pesticides Used" required>
+      </div>
+
+      <div class="col-md-12 text-center mt-2">
+        <button class="btn btn-success w-50">Predict Yield</button>
+      </div>
+
+    </form>
+
+    <!-- Result -->
+    {% if predicted %}
+    <div class="alert alert-success mt-4 text-center">
+      <h5>📊 Estimated Yield</h5>
+      <h2 class="fw-bold">{{ predicted }} tons/hectare</h2>
+    </div>
+    {% endif %}
+
+    {% if tips %}
+
+    <div class="card p-3 mt-4">
+
+      <h4 class="text-success">🌾 Yield Improvement Tips</h4>
+
+      <ul>
+        {% for t in tips %}
+        <li>{{ t }}</li>
+        {% endfor %}
+      </ul>
+
+    </div>
+
+    {% endif %}
+
+  </div>
+
+</div>
+
+{% endblock %}
+
+

@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Crop Recommendation</h2>
+
+<form method="POST" class="row g-3">
+  <div class="col-md-2"><input class="form-control" name="N" placeholder="Nitrogen" required></div>
+  <div class="col-md-2"><input class="form-control" name="P" placeholder="Phosphorus" required></div>
+  <div class="col-md-2"><input class="form-control" name="K" placeholder="Potassium" required></div>
+  <div class="col-md-2"><input class="form-control" name="temperature" placeholder="Temperature" required></div>
+  <div class="col-md-2"><input class="form-control" name="humidity" placeholder="Humidity" required></div>
+  <div class="col-md-2"><input class="form-control" name="ph" placeholder="pH" required></div>
+  <div class="col-md-2 mt-2"><input class="form-control" name="rainfall" placeholder="Rainfall" required></div>
+  <div class="col-md-12 mt-2">
+    <button class="btn btn-success">Predict</button>
+  </div>
+</form>
+
+{% if prediction %}
+<hr>
+
+<h4>
+  Recommended Crop:
+  <span class="badge bg-success">{{ prediction }}</span>
+</h4>
+
+{% if advisory %}
+<div class="card p-3 mt-4">
+
+  <h4 class="text-success">🌱 Quick Farming Advice</h4>
+
+  <h5>🌾 Best Seeds</h5>
+  <ul>
+    {% for s in advisory.seeds %}
+    <li>{{ s }}</li>
+    {% endfor %}
+  </ul>
+
+  <h5>🚜 Planting Methods</h5>
+  <ul>
+    {% for p in advisory.planting %}
+    <li>{{ p }}</li>
+    {% endfor %}
+  </ul>
+
+  <h5>🧪 Fertilizers</h5>
+  <ul>
+    {% for f in advisory.fertilizer %}
+    <li>{{ f }}</li>
+    {% endfor %}
+  </ul>
+
+  <h5>🌿 Best Practices</h5>
+  <ul>
+    {% for p in advisory.practices %}
+    <li>{{ p }}</li>
+    {% endfor %}
+  </ul>
+
+</div>
+{% endif %}
+
+{% endif %}
+
+{% endblock %}

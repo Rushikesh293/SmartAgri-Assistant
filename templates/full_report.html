@@ -1,0 +1,135 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container mt-5">
+
+  <!-- 🔷 TITLE -->
+  <div class="text-center mb-4">
+    <h2>📄 Smart Agriculture Report</h2>
+    <p class="text-muted">AI-powered crop, yield, irrigation & disease insights</p>
+  </div>
+
+  <!-- 🔷 INPUT FORM -->
+  <div class="card p-4 mb-4">
+    <h5 class="mb-3">🔍 Enter Field Conditions</h5>
+
+    <form method="POST" class="row g-3">
+      <div class="col-md-2"><input class="form-control" name="nitrogen" placeholder="Nitrogen" required></div>
+      <div class="col-md-2"><input class="form-control" name="phosphorus" placeholder="Phosphorus" required></div>
+      <div class="col-md-2"><input class="form-control" name="potassium" placeholder="Potassium" required></div>
+      <div class="col-md-2"><input class="form-control" name="temperature" placeholder="Temperature" required></div>
+      <div class="col-md-2"><input class="form-control" name="humidity" placeholder="Humidity" required></div>
+      <div class="col-md-2"><input class="form-control" name="rainfall" placeholder="Rainfall" required></div>
+      <div class="col-md-2"><input class="form-control" name="ph" placeholder="pH" required></div>
+
+      <div class="col-md-12 text-center mt-3">
+        <button class="btn btn-success px-4">Generate Report</button>
+      </div>
+    </form>
+  </div>
+
+  {% if report %}
+
+  <!-- 🔷 SUMMARY CARDS -->
+  <div class="row g-4 mb-4">
+
+    <div class="col-md-4">
+      <div class="card text-center p-3">
+        <h6>🌾 Recommended Crop</h6>
+        <h4 class="text-success">{{ report.crop }}</h4>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card text-center p-3">
+        <h6>📈 Expected Yield</h6>
+        <h4>{{ report.yield }}</h4>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card text-center p-3">
+        <h6>💧 Irrigation</h6>
+        <h5>{{ report.irrigation_main }}</h5>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 🔷 ENVIRONMENT INFO -->
+  <div class="card p-3 mb-4">
+    <h5>🌍 Crop Requirements</h5>
+    <p><b>Soil:</b> {{ report.soil }}</p>
+    <p><b>Climate:</b> {{ report.climate }}</p>
+    <p><b>Season:</b> {{ report.season }}</p>
+    <p><b>Sowing:</b> {{ report.sowing }}</p>
+    <p><b>Harvest:</b> {{ report.harvest }}</p>
+  </div>
+
+  <!-- 🔷 IRRIGATION -->
+  <div class="card p-3 mb-4">
+    <h5>💧 Irrigation Tips</h5>
+    <ul>
+      {% for i in report.irrigation_tips %}
+      <li>{{ i }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <!-- 🔷 FERTILIZER -->
+  <div class="card p-3 mb-4">
+    <h5>🧪 Fertilizer Plan</h5>
+    <ul>
+      {% for f in report.fertilizer %}
+      <li>{{ f }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <!-- 🔷 DISEASES -->
+  <div class="card p-3 mb-4">
+    <h5>🌿 Disease Risks</h5>
+
+    {% for d in report.diseases %}
+    <div class="border p-2 mb-2 rounded">
+      <b>{{ d.name }}</b><br>
+      <b>Symptoms:</b> {{ d.symptoms }}<br>
+      <b>Prevention:</b> {{ d.prevention }}<br>
+      <b>Cure:</b> {{ d.cure }}
+    </div>
+    {% endfor %}
+
+  </div>
+
+  <!-- 🔷 BEST PRACTICES -->
+  <div class="card p-3 mb-4">
+    <h5>🌱 Best Practices</h5>
+    <ul>
+      {% for p in report.best_practices %}
+      <li>{{ p }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <!-- 🔷 YIELD IMPROVEMENT -->
+  <div class="card p-3 mb-4">
+    <h5>📈 Yield Optimization</h5>
+    <ul>
+      {% for y in report.yield_tips %}
+      <li>{{ y }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <!-- 🔷 DOWNLOAD BUTTON -->
+  <div class="text-center">
+    <a href="/download-report" class="btn btn-primary px-4">
+      📥 Download PDF Report
+    </a>
+  </div>
+
+  {% endif %}
+
+</div>
+
+{% endblock %}
